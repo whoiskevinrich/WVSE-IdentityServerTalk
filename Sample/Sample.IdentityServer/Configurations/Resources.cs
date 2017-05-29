@@ -33,8 +33,8 @@ namespace Sample.IdentityServer.Configurations
                     ApiSecrets = new List<Secret> {new Secret("scopeSecret".Sha256())},
                     Scopes = new List<Scope>
                     {
-                        new Scope("exampleApi.read"),
-                        new Scope("exampleApi.write")
+                        new Scope("claims.read"),
+                        new Scope("claims.write")
                     }
                 }
             };

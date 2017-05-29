@@ -19,14 +19,14 @@ namespace Sample.IdentityServer.Configurations
                     // no interactive user, use the clientid/secret for authentication
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
 
-                    // secret for authentication
+                    // secrets for authentication
                     ClientSecrets =
                     {
                         new Secret("secret".Sha256())
                     },
 
                     // scopes that client has access to
-                    AllowedScopes = {"exampleApi.read", "exampleApi.write"}
+                    AllowedScopes = {"claims.read", "claims.write"}
                 },
 
                 // set up client for use by interactive users
@@ -42,7 +42,7 @@ namespace Sample.IdentityServer.Configurations
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email,
                         "role",
-                        "exampleApi.write"
+                        "claims.read"
                     },
 
                     // set up the server's contract on what URLs can access the api

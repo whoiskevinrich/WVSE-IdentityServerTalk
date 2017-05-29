@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Sample.Api
+namespace Sample.Auth0.WebApi
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            Console.Title = "Sample Consuming API";
+            Console.Title = "Sample Auth0 API";
 
             var host = new WebHostBuilder()
                 .UseKestrel()

@@ -47,6 +47,7 @@ namespace Sample.IdentityServer
                     app.UseDeveloperExceptionPage();
                 }
 
+                // Add the identity server middleware
                 app.UseIdentityServer();
 
                 app.UseMvcWithDefaultRoute();

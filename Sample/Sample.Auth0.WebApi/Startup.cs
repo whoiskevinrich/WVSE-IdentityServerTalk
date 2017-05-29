@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 
-namespace Sample.Api
+namespace Sample.Auth0.WebApi
 {
     public class Startup
     {
@@ -25,7 +25,7 @@ namespace Sample.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
+            // 8. Add framework services.
             services.AddMvc(config =>
             {
                 // Create policy to enforce Global Authentication
@@ -36,9 +36,8 @@ namespace Sample.Api
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
 
-            // Add Authorization Policies
-            services.AddAuthorization(options =>
-            {
+            // 9. Add Authorization Policies
+            services.AddAuthorization(options => {
                 options.AddPolicy("Read Claims", policy => policy.RequireClaim("scope", "claims.read"));
             });
         }
@@ -49,16 +48,41 @@ namespace Sample.Api
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            // Install-Package IdentityServer4.AccessTokenValidation
-            app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
-            {
-                // Roughly equivalant to "Audience"
-                ApiName = "exampleApi",
-                Authority = "http://localhost:5001",
+            // Prologue: Explain Controller
 
-                //AllowedScopes = new string[] {"claims.read"},
-                RequireHttpsMetadata = false,
-            });
+            // 1. Install Appropriate packages: 
+            //      Install-Package Microsoft.AspNetCore.Authentication.JwtBearer
+
+            // 2. Create Non-Interactive Client at Auth0:
+            //      https://manage.auth0.com/#clients
+            //      Name: LINQPad
+
+            // 3. Select API (Add New)
+            //      Name: Sample.Auth0.WebApi
+            //      Identifier: https://sample.auth0.webapi/
+
+            // 4. Add Scopes for "claims.read", "claims.write"
+
+            // 5. Assign claims.read scope to LINQPad client
+
+            // 6. Configure OAuth on Website for the client
+            //      Client => Settings => Advanced => OAuth
+            //      Change JsonWebTokenSignature to RS256
+
+            // 7. Set up API Middleware via quickstart
+            
+            // 8-9 (above). Set up Access Policies
+
+            // 10. Set up LINQPad consumer via quickstart
+
+            //JWT Bearer Auth Middleware:
+            //      Auth0 => Api => Quickstart
+            var options = new JwtBearerOptions
+            {
+                Audience = "https://sample.auth0.webapi/",
+                Authority = "https://whoiskevinrich.auth0.com/"
+            };
+            app.UseJwtBearerAuthentication(options);
 
             app.UseMvc();
         }
