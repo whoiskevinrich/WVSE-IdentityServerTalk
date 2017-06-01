@@ -47,6 +47,8 @@ namespace Sample.IdentityServer
                     app.UseDeveloperExceptionPage();
                 }
 
+                app.UseStaticFiles();
+
                 // Add the identity server middleware
                 app.UseIdentityServer();
 

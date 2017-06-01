@@ -11,6 +11,8 @@ namespace Sample.Web
     {
         public static void Main(string[] args)
         {
+            Console.Title = "Sample Consuming Web Application";
+
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())

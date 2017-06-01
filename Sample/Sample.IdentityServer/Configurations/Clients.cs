@@ -32,8 +32,8 @@ namespace Sample.IdentityServer.Configurations
                 // set up client for use by interactive users
                 new Client
                 {
-                    ClientId = "oidcClient",
-                    ClientName = "Example Implicity Client Application",
+                    ClientId = "MVC Client",
+                    ClientName = "Example Implicit Client Application",
 
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowedScopes = new []
@@ -41,15 +41,13 @@ namespace Sample.IdentityServer.Configurations
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email,
-                        "role",
-                        "claims.read"
                     },
 
                     // set up the server's contract on what URLs can access the api
-                    RedirectUris = new []{ "http://localhost:58196/signin-oidc" },
+                    RedirectUris = new []{ "http://localhost:7001/signin-oidc" },
 
                     // set up which logout endpoints shall be hit on logout
-                    PostLogoutRedirectUris = new []{ "http://localhost:58196" }
+                    PostLogoutRedirectUris = new []{ "http://localhost:7001" }
                 }
             };
         }

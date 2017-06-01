@@ -13,11 +13,6 @@ namespace Sample.IdentityServer.Configurations
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
                 new IdentityResources.Email(),
-                new IdentityResource
-                {
-                    Name = "role",
-                    UserClaims = new List<string> {"role"}
-                }
             };
         }
 
@@ -33,8 +28,8 @@ namespace Sample.IdentityServer.Configurations
                     ApiSecrets = new List<Secret> {new Secret("scopeSecret".Sha256())},
                     Scopes = new List<Scope>
                     {
-                        new Scope("claims.read"),
-                        new Scope("claims.write")
+                        new Scope(name: "claims.read", displayName: "Read Claims"),
+                        new Scope(name: "claims.write", displayName: "Write Claims")
                     }
                 }
             };

@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using IdentityModel;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Sample.Web
 {
@@ -51,7 +53,7 @@ namespace Sample.Web
             // direct application to issue it's own cookie and use cookie-based authentication
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
-                AuthenticationScheme = "cookie"
+                AuthenticationScheme = "Cookies"
             });
 
             // Turn off JWT claim type mapping to allow well-known claims ('sub'/'idp') through unmolested 
@@ -61,15 +63,16 @@ namespace Sample.Web
             app.UseOpenIdConnectAuthentication(new OpenIdConnectOptions
             {
                 // the client registered with our IdentityServer
-                ClientId = "oidcClient",
+                ClientId = "MVC Client",
                 SaveTokens = true,
 
                 // Set endpoint for provider
-                Authority = "http://localhost:5000",
+                Authority = "http://localhost:5001",
                 RequireHttpsMetadata = false,
 
                 // authentication type to log in with
-                SignInScheme = "cookie"
+                SignInScheme = "Cookies",
+                AuthenticationScheme = "oidc",
             });
 
             app.UseStaticFiles();

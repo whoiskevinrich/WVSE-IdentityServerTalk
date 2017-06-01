@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Sample.Web.Controllers
 {
@@ -17,7 +18,6 @@ namespace Sample.Web.Controllers
             return View();
         }
 
-        [Authorize]
         public IActionResult Contact()
         {
             ViewData["Message"] = "Your contact page.";
@@ -28,6 +28,20 @@ namespace Sample.Web.Controllers
         public IActionResult Error()
         {
             return View();
+        }
+
+        [Authorize]
+        public IActionResult Claims()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.Authentication.SignOutAsync("Cookies");
+            await HttpContext.Authentication.SignOutAsync("oidc");
+
+            return RedirectToAction("Index");
         }
     }
 }

@@ -19,6 +19,8 @@ namespace Sample.IdentityServer.Configurations
                     Claims = new List<Claim>
                     {
                         new Claim(JwtClaimTypes.Email, "whoiskevinrich@gmail.com"),
+                        new Claim(JwtClaimTypes.GivenName, "Kevin"),
+                        new Claim(JwtClaimTypes.FamilyName, "Rich"),
                         new Claim(JwtClaimTypes.Role, "admin")
                     }
                 }

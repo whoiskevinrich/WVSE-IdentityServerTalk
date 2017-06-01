@@ -48,7 +48,7 @@ namespace Sample.Api
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
+            
             // Install-Package IdentityServer4.AccessTokenValidation
             app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
             {
