@@ -38,7 +38,11 @@ namespace Sample.Auth0.WebApi
 
             // 9. Add Authorization Policies
             services.AddAuthorization(options => {
-                options.AddPolicy("Read Claims", policy => policy.RequireClaim("scope", "claims.read"));
+                options.AddPolicy("Developer", policy => 
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireClaim("scope", "claims.read");
+                });
             });
         }
 

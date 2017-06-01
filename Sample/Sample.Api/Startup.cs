@@ -39,7 +39,7 @@ namespace Sample.Api
             // Add Authorization Policies
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("Read Claims", policy => policy.RequireClaim("scope", "claims.read"));
+                options.AddPolicy("Developer", policy => policy.RequireClaim("scope", "claims.read"));
             });
         }
 

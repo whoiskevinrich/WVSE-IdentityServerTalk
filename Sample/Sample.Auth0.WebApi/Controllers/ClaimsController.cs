@@ -15,7 +15,7 @@ namespace Sample.Auth0.WebApi.Controllers
         }
 
         [HttpGet("PolicyRestricted")]
-        [Authorize(Policy = "Read Claims")]
+        [Authorize(Policy = "Developer")]
         public IActionResult PolicyRestricted()
         {
             var claims =  User.Claims.Select(claim => new {claim.Type, claim.Value}).ToArray();
