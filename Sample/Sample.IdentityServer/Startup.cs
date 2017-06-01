@@ -50,6 +50,8 @@ namespace Sample.IdentityServer
                 // Add the identity server middleware
                 app.UseIdentityServer();
 
+                // Browse to http://localhost:5001/.well-known/openid-configuration
+
                 app.UseMvcWithDefaultRoute();
             }
         }
