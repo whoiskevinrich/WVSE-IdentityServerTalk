@@ -1,20 +1,18 @@
-#Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Willamette Valley Software Engineering Identity Server Talk 
 
-#Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+A basic set of demos for Auth0 and IdentityServer4 implementations as presented June 1, 2017 titles **Choosing Your Identity (Server)**
 
-#Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## Resources
 
-#Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+* [Slides](https://github.com/whoiskevinrich/WVSE-IdentityServerTalk/blob/master/2017-June-WVSE.pptx)
+* [LINQPad JSON Extensions](https://github.com/whoiskevinrich/WVSE-IdentityServerTalk/blob/master/LINQPad%20Queries/JsonExtensions.linq)
+* [LINQPad Auth0 Demo Sample API Client](https://github.com/whoiskevinrich/WVSE-IdentityServerTalk/blob/master/LINQPad%20Queries/Auth0.linq)
+* [LINQPad IdentityServer4 Demo Sample API Client](https://github.com/whoiskevinrich/WVSE-IdentityServerTalk/blob/master/LINQPad%20Queries/Identity%20Server.linq)
+* [Sample Code](https://github.com/whoiskevinrich/WVSE-IdentityServerTalk/tree/master/Sample)
+* Other Resources
+  * [OAuth 2.0](https://oauth.net/2/)
+  * [OpenID Connect](http://openid.net/connect/)
+  * [Auth0](https://auth0.com/)
+  * [IdentityServer](https://identityserver.io/)
+  * [whoIsKevinRich.com](https://www.whoiskevinrich.com/)
+  * [LINQPad](https://www.linqpad.net/)
