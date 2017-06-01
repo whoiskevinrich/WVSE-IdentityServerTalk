@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using IdentityServer4;
+﻿using IdentityServer4;
 using IdentityServer4.Models;
+using System.Collections.Generic;
 
 namespace Sample.IdentityServer.Configurations
 {
@@ -41,7 +41,10 @@ namespace Sample.IdentityServer.Configurations
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email,
+                        "roles"
                     },
+
+                    AlwaysIncludeUserClaimsInIdToken = true,
 
                     // set up the server's contract on what URLs can access the api
                     RedirectUris = new []{ "http://localhost:7001/signin-oidc" },

@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using IdentityModel;
 using IdentityServer4.Models;
+using System.Collections.Generic;
 
 namespace Sample.IdentityServer.Configurations
 {
@@ -13,6 +14,7 @@ namespace Sample.IdentityServer.Configurations
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
                 new IdentityResources.Email(),
+                new IdentityResource("roles", "User Roles", new []{JwtClaimTypes.Role})
             };
         }
 

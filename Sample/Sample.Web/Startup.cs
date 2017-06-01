@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using IdentityModel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using IdentityModel;
-using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Sample.Web
 {
@@ -32,6 +27,16 @@ namespace Sample.Web
         {
             // Add framework services.
             services.AddMvc();
+
+            // Add Authorization Policies
+            services.AddAuthorization(x =>
+            {
+                x.AddPolicy("View Claims", policy =>
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.RequireClaim(JwtClaimTypes.Role, "Admin", "Developer");
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,15 +67,16 @@ namespace Sample.Web
             // direct applicaition to use an OpenIDConnect Provider (our Identity Server)
             app.UseOpenIdConnectAuthentication(new OpenIdConnectOptions
             {
-                // the client registered with our IdentityServer
+                // Configure our client
                 ClientId = "MVC Client",
                 SaveTokens = true,
+                Scope = { "openid", "profile", "roles" },
 
                 // Set endpoint for provider
                 Authority = "http://localhost:5001",
                 RequireHttpsMetadata = false,
 
-                // authentication type to log in with
+                // Cookie Management (see Home:Logout Action)
                 SignInScheme = "Cookies",
                 AuthenticationScheme = "oidc",
             });

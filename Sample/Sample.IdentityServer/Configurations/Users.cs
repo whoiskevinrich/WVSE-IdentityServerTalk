@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Security.Claims;
-using IdentityModel;
+﻿using IdentityModel;
 using IdentityServer4.Test;
+using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace Sample.IdentityServer.Configurations
 {
@@ -21,7 +21,7 @@ namespace Sample.IdentityServer.Configurations
                         new Claim(JwtClaimTypes.Email, "whoiskevinrich@gmail.com"),
                         new Claim(JwtClaimTypes.GivenName, "Kevin"),
                         new Claim(JwtClaimTypes.FamilyName, "Rich"),
-                        new Claim(JwtClaimTypes.Role, "admin")
+                        new Claim(JwtClaimTypes.Role, "Developer")
                     }
                 }
             };

@@ -30,7 +30,7 @@ namespace Sample.Web.Controllers
             return View();
         }
 
-        [Authorize]
+        [Authorize(Policy = "View Claims")]
         public IActionResult Claims()
         {
             return View();
